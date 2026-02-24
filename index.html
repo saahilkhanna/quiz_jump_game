@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizJump</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+    <div id="hud">
+      <div id="hud-left">
+        <div id="hearts"></div>
+        <div id="coins"><span class="coin-icon">&#x1FA99;</span> <span id="coin-count">0</span></div>
+      </div>
+      <div id="hud-center">
+        <div id="boss-banner" class="hidden">BOSS QUESTION!</div>
+        <div id="problem-box">
+          <span id="problem-text">9 + 3 = ?</span>
+        </div>
+        <div id="boss-progress" class="hidden"></div>
+        <div id="powerup-hud"></div>
+      </div>
+      <div id="hud-right">
+        <div class="hud-stat"><span class="hud-label">Score</span><span id="score" class="hud-value">0</span></div>
+        <div class="hud-stat"><span class="hud-label">Best</span><span id="best" class="hud-value">0</span></div>
+        <div class="hud-stat"><span class="hud-label">Streak</span><span id="streak" class="hud-value streak-val">0</span></div>
+      </div>
+    </div>
+    <div id="feedback-message" class="hidden"></div>
+    <div id="bottom-bar">
+      <button id="btn-items" class="icon-btn" title="Items">&#11088;</button>
+      <button id="btn-settings" class="icon-btn" title="Settings">&#9881;&#65039;</button>
+      <button id="btn-shop" class="icon-btn" title="Shop">&#128722;</button>
+      <button id="btn-pause" class="icon-btn hidden" title="Pause">&#9208;&#65039;</button>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="start-screen">
+    <div class="screen-content">
+      <h1 class="game-title">QuizJump</h1>
+      <div class="title-character"></div>
+      <p class="tagline">Solve math, jump to the answer!</p>
+      <div class="instructions">
+        <div class="instruction-item">&#9989; Correct = climb higher</div>
+        <div class="instruction-item">&#10060; Wrong = lose a heart</div>
+        <div class="instruction-item">&#10084;&#65039; You get 3 hearts</div>
+      </div>
+      <p class="controls-hint">Arrow keys / A-D to move &middot; Space to jump</p>
+      <button id="btn-start">Start Game</button>
+    </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div id="game-over-screen" class="hidden">
+    <div class="screen-content">
+      <h1 class="gameover-title">Game Over!</h1>
+      <p id="game-over-reason" class="gameover-reason"></p>
+      <div class="score-display">
+        <div class="score-box"><span class="score-label">Score</span><span id="final-score" class="score-num">0</span></div>
+        <div class="score-box best"><span class="score-label">Best</span><span id="final-best" class="score-num">0</span></div>
+      </div>
+      <button id="btn-play-again">Play Again</button>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div id="modal-backdrop" class="hidden"></div>
+  <div id="modal-settings" class="modal hidden">
+    <div class="modal-header">
+      <h2>Settings</h2>
+      <button class="modal-close" data-modal="settings">&times;</button>
+    </div>
+    <div class="modal-body" id="settings-body"></div>
+  </div>
+  <div id="modal-items" class="modal hidden">
+    <div class="modal-header">
+      <h2>Items</h2>
+      <button class="modal-close" data-modal="items">&times;</button>
+    </div>
+    <div class="modal-body" id="items-body"></div>
+  </div>
+  <div id="modal-shop" class="modal hidden">
+    <div class="modal-header">
+      <h2>Shop</h2>
+      <button class="modal-close" data-modal="shop">&times;</button>
+    </div>
+    <div class="modal-body" id="shop-body"></div>
+  </div>
+
+  <!-- Boss Complete overlay -->
+  <div id="boss-complete-screen" class="hidden">
+    <div class="screen-content">
+      <h1 class="boss-complete-title">Boss Cleared!</h1>
+      <p class="boss-complete-msg" id="boss-complete-msg">Great job!</p>
+      <div class="score-display">
+        <div class="score-box"><span class="score-label">Score</span><span id="boss-score" class="score-num">0</span></div>
+        <div class="score-box best"><span class="score-label">Streak</span><span id="boss-streak" class="score-num">0</span></div>
+      </div>
+      <button id="btn-next-level">Next Level</button>
+    </div>
+  </div>
+
+  <!-- Pause overlay -->
+  <div id="pause-overlay" class="hidden">
+    <div class="pause-panel">
+      <h2>Paused</h2>
+      <button id="pause-resume">Resume</button>
+      <button id="pause-settings">Settings</button>
+      <button id="pause-shop">Shop</button>
+      <button id="pause-quit">Quit to Start</button>
+    </div>
+  </div>
+
+  <!-- Touch controls (hidden by default, shown on mobile) -->
+  <div id="touch-controls" class="hidden">
+    <button id="touch-left" aria-label="Move left">&#9664;</button>
+    <button id="touch-jump" aria-label="Jump">&#9650;</button>
+    <button id="touch-right" aria-label="Move right">&#9654;</button>
+  </div>
+
+  <script src="js/persistence.js"></script>
+  <script src="js/math.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
