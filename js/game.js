@@ -601,7 +601,7 @@
         if (isBoss && settings.powerUpsEnabled && Math.random() < 0.5) {
           state.collectibles.push({
             x: platform.x + platform.width / 2 - 14,
-            y: platform.y - 30,
+            y: platform.y - 60,
             type: 'shield',
             w: 28,
             h: 28,
@@ -613,7 +613,7 @@
         if (settings.powerUpsEnabled && Math.random() < 0.15) {
           state.collectibles.push({
             x: platform.x + platform.width / 2 - 14,
-            y: platform.y - 30,
+            y: platform.y - 60,
             type: 'shield',
             w: 28,
             h: 28,
